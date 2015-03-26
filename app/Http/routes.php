@@ -8,9 +8,14 @@ Route::get('/t/',function(){
 
 
 
+	/*$user = new \App\User();
+	$user->name = "Doby";
+	$user->email = "u@u.com";
+	$user->save();*/
 
 
-	$users = \App\User::where('id',4)->get();
+
+	$users = \App\User::paginate();
 
 	return $users;
 
