@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Jenssegers\Mongodb\Collection;
 
 class CreateUsersTable extends Migration {
 
@@ -12,14 +13,17 @@ class CreateUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('users', function(Blueprint $table)
+		Schema::create('users', function($collection)
 		{
-			$table->increments('id');
-			$table->string('name');
-			$table->string('email')->unique();
-			$table->string('password', 60);
-			$table->rememberToken();
-			$table->timestamps();
+            $collection->bigIncrements('id');
+            $collection->string('name');
+            $collection->string('email')->unique();
+            $collection->string('password');
+            $collection->string('location');
+            $collection->string('gender');
+            $collection->string('adult');
+            $collection->rememberToken();
+            $collection->timestamps();
 		});
 	}
 

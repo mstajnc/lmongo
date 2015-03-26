@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Jenssegers\Mongodb\Collection;
 
 class CreatePasswordResetsTable extends Migration {
 
@@ -12,11 +12,11 @@ class CreatePasswordResetsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('password_resets', function(Blueprint $table)
+		Schema::create('password_resets', function($collection)
 		{
-			$table->string('email')->index();
-			$table->string('token')->index();
-			$table->timestamp('created_at');
+            $collection->index('email');
+            $collection->index('token');
+            $collection->timestamp('created_at');
 		});
 	}
 
